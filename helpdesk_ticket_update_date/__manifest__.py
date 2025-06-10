@@ -7,8 +7,8 @@
     "depends": ["helpdesk"],
     "data": [
         "views/helpdesk_tickets_followup.xml",
-        "views/helpdesk_portal_helpdesk_ticket.xml"
+        "views/helpdesk_portal_helpdesk_ticket.xml",
     ],
     "installable": True,
-    "application": False
+    "application": False,
 }
