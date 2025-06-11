@@ -4,6 +4,7 @@
     "category": "Helpdesk",
     "license": "AGPL-3",
     "author": "AvanzOSC",
+    "website": "https://github.com/avanzosc/odoo-addons",
     "depends": ["helpdesk"],
     "data": [
         "views/helpdesk_tickets_followup.xml",

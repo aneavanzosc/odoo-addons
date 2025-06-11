@@ -11,11 +11,5 @@
         t-options="{&quot;widget&quot;: &quot;datetime&quot;, &quot;hide_seconds&quot;: True}"
       />
         </xpath>
-        <!-- <xpath expr="//div[@name='description']" position="after">
-            <strong>Comentario del técnico</strong>
-            <div class="row mb-4" name="Comentario del tecnico">
-                <div class="col-lg-12" t-field="ticket.x_studio_comentario_del_tcnico"/>
-            </div>
-        </xpath> -->
     </template>
 </odoo>
