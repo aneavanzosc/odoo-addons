@@ -3,7 +3,7 @@
    :alt: License: AGPL-3
 
 ===================
-Pegatinas Productos
+Product Glued Label
 ===================
 
 This module adds product stickers support.
