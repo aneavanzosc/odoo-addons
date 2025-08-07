@@ -5,5 +5,5 @@ from odoo import fields, models
 
 class ProductTemplate(models.Model):
     _inherit = "product.template"
-    codigobarras = fields.Binary("Caja Pequeña")
-    pegatinacaja = fields.Binary("Caja Grande")
+    codigobarras = fields.Binary("Small Box")
+    pegatinacaja = fields.Binary("Big Box")
