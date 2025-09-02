@@ -8,6 +8,7 @@ Account Invoice Usability
 
 * In Journal Item" new field "Product Internal Reference".
 * Search invoices by product, or line description.
+* Moves the Invoice Origin field after the shipping partner while making it optional in the invoice tree view.
 
 Bug Tracker
 ===========
