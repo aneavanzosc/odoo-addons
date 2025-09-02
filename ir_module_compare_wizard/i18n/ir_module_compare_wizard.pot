@@ -6,14 +6,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-31 10:31+0000\n"
-"PO-Revision-Date: 2024-10-31 10:31+0000\n"
+"POT-Creation-Date: 2025-06-19 11:07+0000\n"
+"PO-Revision-Date: 2025-06-19 11:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: ir_module_compare_wizard
+#: model:ir.model.fields,field_description:ir_module_compare_wizard.field_ir_module_import__installed_module_count
+msgid "# Additional Modules"
+msgstr ""
 
 #. module: ir_module_compare_wizard
 #: model:ir.model.fields,field_description:ir_module_compare_wizard.field_ir_module_import__module_count
@@ -97,6 +102,11 @@ msgid "Activity Type Icon"
 msgstr ""
 
 #. module: ir_module_compare_wizard
+#: model_terms:ir.ui.view,arch_db:ir_module_compare_wizard.ir_module_import_view_form
+msgid "Additional Installed"
+msgstr ""
+
+#. module: ir_module_compare_wizard
 #: model:ir.model.fields,field_description:ir_module_compare_wizard.field_ir_module_import__message_attachment_count
 msgid "Attachment Count"
 msgstr ""
@@ -104,7 +114,6 @@ msgstr ""
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 #: model:ir.model.fields,field_description:ir_module_compare_wizard.field_ir_module_import_line__module_author
 msgid "Author"
 msgstr ""
@@ -217,6 +226,11 @@ msgid "Found Module"
 msgstr ""
 
 #. module: ir_module_compare_wizard
+#: model_terms:ir.ui.view,arch_db:ir_module_compare_wizard.ir_module_import_view_form
+msgid "Found Modules"
+msgstr ""
+
+#. module: ir_module_compare_wizard
 #: model_terms:ir.ui.view,arch_db:ir_module_compare_wizard.ir_module_import_line_view_search
 #: model_terms:ir.ui.view,arch_db:ir_module_compare_wizard.ir_module_import_view_search
 msgid "Group By"
@@ -298,15 +312,18 @@ msgstr ""
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 msgid "Install Module"
 msgstr ""
 
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 msgid "Installed Version"
+msgstr ""
+
+#. module: ir_module_compare_wizard
+#: model:ir.model.fields,field_description:ir_module_compare_wizard.field_ir_module_import__is_enterprise
+msgid "Is Enterprise"
 msgstr ""
 
 #. module: ir_module_compare_wizard
@@ -334,8 +351,12 @@ msgstr ""
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 msgid "Latest Version"
+msgstr ""
+
+#. module: ir_module_compare_wizard
+#: model:ir.model.fields,field_description:ir_module_compare_wizard.field_ir_module_import_line__license
+msgid "License"
 msgstr ""
 
 #. module: ir_module_compare_wizard
@@ -367,28 +388,24 @@ msgstr ""
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 msgid "Migrate Module"
 msgstr ""
 
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 msgid "Module %(module_name)s not installable"
 msgstr ""
 
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 msgid "Module Author Generic"
 msgstr ""
 
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 msgid "Module Name"
 msgstr ""
 
@@ -420,14 +437,12 @@ msgstr ""
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 msgid "No module %(module_name)s found."
 msgstr ""
 
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 #: model:ir.model.fields,field_description:ir_module_compare_wizard.field_ir_module_import_line__module_notes
 msgid "Notes"
 msgstr ""
@@ -465,14 +480,8 @@ msgstr ""
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 #: model:ir.model.fields,field_description:ir_module_compare_wizard.field_ir_module_import_line__priority
 msgid "Priority"
-msgstr ""
-
-#. module: ir_module_compare_wizard
-#: model_terms:ir.ui.view,arch_db:ir_module_compare_wizard.ir_module_import_line_view_form
-msgid "Process"
 msgstr ""
 
 #. module: ir_module_compare_wizard
@@ -510,7 +519,6 @@ msgstr ""
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 #: model:ir.model.fields,field_description:ir_module_compare_wizard.field_ir_module_import_line__module_technical_name
 msgid "Technical Name"
 msgstr ""
@@ -542,7 +550,6 @@ msgstr ""
 #. module: ir_module_compare_wizard
 #. odoo-python
 #: code:addons/ir_module_compare_wizard/models/ir_module_compare.py:0
-#: code:addons/temp-addons/ir_module_compare_wizard/models/ir_module_compare.py:0
 #: model:ir.model.fields,field_description:ir_module_compare_wizard.field_ir_module_import_line__module_website
 msgid "Website"
 msgstr ""
