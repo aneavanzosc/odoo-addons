@@ -116,10 +116,8 @@ class ProductImport(models.Model):
             if not product_name:
                 log_infos.append(_("Product Code added as Product Name"))
             if product_type:
-                if not any(
-                    product_type == type
-                    for type, _ in import_line_obj._get_selection_product_type()
-                ):
+                ln = [w for w, v in import_line_obj._get_selection_product_type()]
+                if product_type not in ln:
                     log_infos.append(_("Product Type not understood."))
                 else:
                     values.update(
@@ -128,21 +126,21 @@ class ProductImport(models.Model):
                         }
                     )
             if purchase_method:
-                if not any(
-                    purchase_method == method
-                    for method, _ in import_line_obj._get_selection_purchase_method()
+                if (
+                    purchase_method
+                    not in import_line_obj._get_selection_purchase_method()
                 ):
                     log_infos.append(_("Purchase Method not understood."))
                 else:
                     values.update(
                         {
-                            "purchase_method": purchase_method,
+                            "product_type": purchase_method,
                         }
                     )
             if invoice_policy:
-                if not any(
-                    invoice_policy == policy
-                    for policy, _ in import_line_obj._get_selection_invoice_policy()
+                if (
+                    invoice_policy
+                    not in import_line_obj._get_selection_invoice_policy()
                 ):
                     log_infos.append(_("Invoice Policy not understood"))
                 else:
@@ -172,21 +170,14 @@ class ProductImport(models.Model):
 
     def button_open_product(self):
         self.ensure_one()
-        action = self.env["ir.actions.actions"]._for_xml_id(
-            "product.product_normal_action"
-        )
+        products = self.mapped("import_line_ids.product_id")
+        action = self.env.ref("product.product_normal_action")
+        action_dict = action.read()[0] if action else {}
         domain = expression.AND(
-            [
-                [("id", "in", self.mapped("import_line_ids.product_id").ids)],
-                safe_eval(action.get("domain") or "[]"),
-            ]
+            [[("id", "in", products.ids)], safe_eval(action.domain or "[]")]
         )
-        action.update(
-            {
-                "domain": domain,
-            }
-        )
-        return action
+        action_dict.update({"domain": domain})
+        return action_dict
 
 
 class ProductImportLine(models.Model):
@@ -655,8 +646,6 @@ class ProductImportLine(models.Model):
             "uom_po_id": self.purchase_uom_id.id or self.product_uom_id.id,
             "sale_ok": self.sale_ok,
             "purchase_ok": self.purchase_ok,
-            "list_price": self.list_price,
-            "standard_price": self.standard_price,
             "invoice_policy": self.invoice_policy,
             "categ_id": self.category_id.id,
             "type": self.product_type,
@@ -675,6 +664,18 @@ class ProductImportLine(models.Model):
             values.update(
                 {
                     "taxes_id": [(4, self.customer_tax_id.id)],
+                }
+            )
+        if self.list_price > 0:
+            values.update(
+                {
+                    "list_price": self.list_price,
+                }
+            )
+        if self.standard_price > 0:
+            values.update(
+                {
+                    "standard_price": self.standard_price,
                 }
             )
         return values
