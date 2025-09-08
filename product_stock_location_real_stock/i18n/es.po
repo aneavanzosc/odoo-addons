@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0+e\n"
+"Project-Id-Version: Odoo Server 18.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-23 08:18+0000\n"
 "PO-Revision-Date: 2024-01-23 08:18+0000\n"
@@ -82,7 +82,7 @@ msgstr "Quants"
 #: model:ir.model.fields,field_description:product_stock_location_real_stock.field_stock_quant__real_stock_location
 #: model_terms:ir.ui.view,arch_db:product_stock_location_real_stock.quant_search_view
 #: model_terms:ir.ui.view,arch_db:product_stock_location_real_stock.view_location_search
-msgid "Real Stock Location"
+msgid "Stock Real Location"
 msgstr "Ubicación stock real"
 
 #. module: product_stock_location_real_stock

@@ -7,7 +7,7 @@ class StockQuant(models.Model):
     _inherit = "stock.quant"
 
     real_stock_location = fields.Boolean(
-        string="Real Stock Location",
+        string="Stock Real Location",
         store=True,
         copy=False,
         related="location_id.real_stock_location",

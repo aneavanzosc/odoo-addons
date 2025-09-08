@@ -7,5 +7,5 @@ class StockLocation(models.Model):
     _inherit = "stock.location"
 
     real_stock_location = fields.Boolean(
-        string="Real Stock Location", default=False, copy=True
+        string="Stock Real Location", default=False, copy=True
     )
