@@ -3,7 +3,7 @@
 
 {
     "name": "Purchase Import Wizard",
-    "version": "14.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Hidden/Tools",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -11,7 +11,6 @@
     "depends": [
         "purchase",
         "base_import_wizard",
-        "purchase_discount",
         "product_trim_name",
     ],
     "data": [
