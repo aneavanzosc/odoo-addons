@@ -279,8 +279,9 @@ class PurchaseOrderImportLine(models.Model):
                     line._create_purchase_order_line(purchase_order=purchase)
                 if line.purchase_origin and line.purchase_origin not in origins:
                     if self.filtered(
-                        lambda ln: ln.purchase_origin == line.purchase_origin
-                        and (ln.state == "error")
+                        lambda ln, origin=line.purchase_origin: ln.purchase_origin
+                        == origin
+                        and ln.state == "error"
                     ):
                         log_info = _(
                             "Error: There is another line with the same"
@@ -292,7 +293,9 @@ class PurchaseOrderImportLine(models.Model):
                             origins.append(origin)
                             purchase = line._create_purchase_order()
                             same_origin = self.filtered(
-                                lambda ln: ln.purchase_origin == line.purchase_origin
+                                lambda ln,
+                                origin=line.purchase_origin: ln.purchase_origin
+                                == origin
                             )
                             for record in same_origin:
                                 record._create_purchase_order_line(
