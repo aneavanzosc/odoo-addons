@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_stock_quant_package_form_inherit_partner" model="ir.ui.view">
+    <field name="name">stock.quant.package.form.inherit.partner</field>
+    <field name="model">stock.quant.package</field>
+    <field name="inherit_id" ref="stock.view_quant_package_form" />
+    <field name="priority" eval="99" />
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='package_type_id']" position="after">
+        <field name="partner_id" string="Cliente" readonly="1" />
+      </xpath>
+    </field>
+  </record>
+</odoo>
