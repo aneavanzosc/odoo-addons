@@ -8,4 +8,5 @@ class StockQuant(models.Model):
         "res.partner",
         string="Partner (package)",
         related="package_id.partner_id",
+        store=True,
     )
