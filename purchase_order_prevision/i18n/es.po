@@ -20,7 +20,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_order_prevision.field_purchase_report__estimated_payment_date
 #: model_terms:ir.ui.view,arch_db:purchase_order_prevision.view_purchase_order_filter
 #: model_terms:ir.ui.view,arch_db:purchase_order_prevision.view_purchase_order_search
-msgid "Estimated payment date"
+msgid "Estimated date payment"
 msgstr "Fecha estimada de pago"
 
 #. module: purchase_order_prevision
@@ -31,7 +31,7 @@ msgstr "Fecha prevista"
 #. module: purchase_order_prevision
 #: model:ir.model.fields,field_description:purchase_order_prevision.field_purchase_order__loading_date
 #: model_terms:ir.ui.view,arch_db:purchase_order_prevision.view_purchase_order_filter
-msgid "Loading Date"
+msgid "Date Loading"
 msgstr "Fecha de carga"
 
 #. module: purchase_order_prevision
