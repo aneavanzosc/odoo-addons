@@ -10,13 +10,13 @@ class PurchaseReport(models.Model):
         string="Estimated payment date", readonly=True)
 
     def _select(self):
-        select = super(PurchaseReport, self)._select()
+        select = super()._select()
         new_select = "{}, {}".format(
             select, "s.estimated_payment_date as estimated_payment_date")
         return new_select
 
     def _group_by(self):
-        group_by_str = super(PurchaseReport, self)._group_by()
+        group_by_str = super()._group_by()
         new_group_by_str = "{}, {}".format(
             group_by_str, "s.estimated_payment_date")
         return new_group_by_str
