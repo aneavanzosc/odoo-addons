@@ -4,11 +4,11 @@
         <field name="name">water.subactivity.tree</field>
         <field name="model">water.subactivity</field>
         <field name="arch" type="xml">
-            <tree editable="top">
+            <list editable="top">
                 <field name="name" />
                 <field name="water" />
                 <field name="industry" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -16,7 +16,7 @@
         <field name="name">Water Subactivity</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">water.subactivity</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">list</field>
         <field name="view_id" ref="water_subactivity_view_tree" />
     </record>
 

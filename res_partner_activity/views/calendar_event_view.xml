@@ -10,11 +10,11 @@
                 <field name="principal_activity_industry" invisible="1" />
                 <field
           name="water_subactivity_id"
-          attrs="{'invisible': [('principal_activity_water', '=', False)]}"
+          modifiers="{'invisible': [('principal_activity_water', '=', False)]}"
         />
                 <field
           name="general_industry_subactivity_id"
-          attrs="{'invisible': [('principal_activity_industry', '=', False)]}"
+          modifiers="{'invisible': [('principal_activity_industry', '=', False)]}"
         />
             </field>
             <field name="allday" position="after">
@@ -40,7 +40,7 @@
         <field name="model">calendar.event</field>
         <field name="inherit_id" ref="calendar.view_calendar_event_search" />
         <field name="arch" type="xml">
-            <filter name="availability" position="after">
+            <filter name="responsible" position="after">
                 <filter
           string="Customer"
           name="customer"

@@ -10,12 +10,12 @@
                 <field name="principal_activity_industry" invisible="1" />
                 <field
           name="water_subactivity_id"
-          attrs="{'invisible': [('principal_activity_water', '=', False)]}"
+          modifiers="{'invisible': [('principal_activity_water', '=', False)]}"
           widget="selection"
         />
                 <field
           name="general_industry_subactivity_id"
-          attrs="{'invisible': [('principal_activity_industry', '=', False)]}"
+          modifiers="{'invisible': [('principal_activity_industry', '=', False)]}"
           widget="selection"
         />
             </field>
