@@ -14,6 +14,5 @@ class ResPartner(models.Model):
         group = self.env.ref(
             "res_partner_allow_modify_payment.group_allow_mod_partner_payment"
         )
-        allow_modify_payment = True if self.env.user in group.users else False
         for partner in self:
-            partner.allow_modify_payment = allow_modify_payment
+            partner.allow_modify_payment = self.env.user in group.users
