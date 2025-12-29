@@ -9,7 +9,7 @@
             </field>
             <field name="property_payment_term_id" position="attributes">
                 <attribute
-          name="attrs"
+          name="modifiers"
         >{'readonly': [('allow_modify_payment', '=', False)]}</attribute>
             </field>
         </field>
@@ -24,7 +24,7 @@
         <field name="arch" type="xml">
             <field name="customer_payment_mode_id" position="attributes">
                 <attribute
-          name="attrs"
+          name="modifiers"
         >{'readonly': [('allow_modify_payment', '=', False)]}</attribute>
             </field>
         </field>
