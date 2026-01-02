@@ -31,7 +31,10 @@ class PurchaseOrderImport(models.Model):
         string="Company",
         index=True,
     )
-    warehouse_id = fields.Many2one(string="Warehouse", comodel_name="stock.warehouse")
+    warehouse_id = fields.Many2one(
+        string="Warehouse",
+        comodel_name="stock.warehouse",
+    )
 
     def _get_line_values(self, row_values, datemode=False):
         self.ensure_one()
@@ -122,95 +125,79 @@ class PurchaseOrderImportLine(models.Model):
         ondelete={"create": "set default"},
     )
     purchase_order_id = fields.Many2one(
-        string="Purchase Order", comodel_name="purchase.order"
+        string="Purchase Order",
+        comodel_name="purchase.order",
     )
     purchase_supplier_code = fields.Char(
         string="Supplier Code",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_supplier_name = fields.Char(
         string="Supplier Name",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_create_date = fields.Datetime(
         string="CreateDate",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_date_confirm = fields.Datetime(
         string="DateConfirm",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_origin = fields.Char(
         string="Origin",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_product_code = fields.Char(
         string="Product Code",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_product_name = fields.Char(
         string="Product Name",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_ordered_qty = fields.Float(
         string="Ordered Qty",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_qty_done = fields.Float(
         string="Qty Done",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_price_unit = fields.Float(
         string="Price Unit",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_discount = fields.Float(
         string="Discount",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_state = fields.Char(
         string="State",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_warehouse = fields.Char(
-        string="Warehouse",
-        states={"done": [("readonly", True)]},
+        string="Warehouse Name",
         copy=False,
     )
     purchase_supplier_id = fields.Many2one(
         string="Supplier",
         comodel_name="res.partner",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_product_id = fields.Many2one(
         comodel_name="product.product",
         string="Product",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_warehouse_id = fields.Many2one(
         comodel_name="stock.warehouse",
         string="Warehouse",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
     purchase_picking_type_id = fields.Many2one(
         comodel_name="stock.picking.type",
         string="Picking Type",
-        states={"done": [("readonly", True)]},
         copy=False,
     )
 

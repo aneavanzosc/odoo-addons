@@ -2,9 +2,10 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=====================
+======================
 Purchase Import Wizard
-=====================
+======================
+
 Module to import Purchase Orders from Excel files, improving usability and automation in purchase operations.
 
 * Allows importing purchase orders and lines from structured Excel files.
@@ -41,6 +42,5 @@ Contributors
 
 * Berezi Amubieta <bereziamubieta@avanzosc.es>
 * Ana Juaristi <anajuaristi@avanzosc.es>
-
 
 Do not contact contributors directly about support or help with technical issues.
