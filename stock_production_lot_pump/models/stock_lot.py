@@ -3,8 +3,8 @@
 from odoo import fields, models
 
 
-class StockProductionLot(models.Model):
-    _inherit = "stock.production.lot"
+class StockLot(models.Model):
+    _inherit = "stock.lot"
 
     customer_tag_number = fields.Char(string="Customer tag number", copy=False)
     plant_location = fields.Char(string="Plant location", copy=False)

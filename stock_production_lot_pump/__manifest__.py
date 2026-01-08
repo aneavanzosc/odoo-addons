@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 {
     "name": "Stock Production Lot Pump",
-    "version": "14.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Inventory/Inventory",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -11,7 +11,7 @@
         "stock",
     ],
     "data": [
-        "views/stock_production_lot_views.xml",
+        "views/stock_lot_views.xml",
     ],
     "installable": True,
     "auto_install": False,
