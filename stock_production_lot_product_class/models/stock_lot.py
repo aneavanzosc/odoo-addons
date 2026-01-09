@@ -3,8 +3,8 @@
 from odoo import fields, models
 
 
-class StockProductionLot(models.Model):
-    _inherit = "stock.production.lot"
+class StockLot(models.Model):
+    _inherit = "stock.lot"
 
     product_class_id = fields.Many2one(
         string="Pump type",
@@ -16,5 +16,5 @@ class StockProductionLot(models.Model):
     application_type_id = fields.Many2one(
         string="Type of application",
         copy=False,
-        comodel_name="stock.production.lot.type.application",
+        comodel_name="stock.lot.type.application",
     )

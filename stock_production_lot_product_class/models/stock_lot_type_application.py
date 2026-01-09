@@ -3,8 +3,8 @@
 from odoo import fields, models
 
 
-class StockProductionLotTypeApplication(models.Model):
-    _name = "stock.production.lot.type.application"
+class StockLotTypeApplication(models.Model):
+    _name = "stock.lot.type.application"
     _description = "Type of application"
 
     name = fields.Char(string="Description", copy=False)
