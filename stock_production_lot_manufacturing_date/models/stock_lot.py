@@ -3,11 +3,11 @@
 from odoo import api, fields, models
 
 
-class StockProductionLot(models.Model):
-    _inherit = "stock.production.lot"
+class StockLot(models.Model):
+    _inherit = "stock.lot"
 
     manufacturing_date = fields.Date(string="Manufacturing date", copy=False)
-    manufacturing_year = fields.Integer(
+    manufacturing_year = fields.Char(
         string="Manufacturing year",
         compute="_compute_manufacturing_year",
         store=True,
@@ -17,7 +17,4 @@ class StockProductionLot(models.Model):
     @api.depends("manufacturing_date")
     def _compute_manufacturing_year(self):
         for lot in self:
-            manufacturing_year = 0
-            if lot.manufacturing_date:
-                manufacturing_year = lot.manufacturing_date.year
-            lot.manufacturing_year = manufacturing_year
+            lot.manufacturing_year = str(lot.manufacturing_date.year) if lot.manufacturing_date else ''
