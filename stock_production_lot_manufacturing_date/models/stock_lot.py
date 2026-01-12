@@ -17,4 +17,6 @@ class StockLot(models.Model):
     @api.depends("manufacturing_date")
     def _compute_manufacturing_year(self):
         for lot in self:
-            lot.manufacturing_year = str(lot.manufacturing_date.year) if lot.manufacturing_date else ''
+            lot.manufacturing_year = (
+                str(lot.manufacturing_date.year) if lot.manufacturing_date else ""
+            )
