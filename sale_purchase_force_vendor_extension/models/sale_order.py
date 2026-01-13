@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, fields, models
-from odoo.tools.safe_eval import safe_eval
 
 
 class SaleOrder(models.Model):
@@ -13,7 +12,7 @@ class SaleOrder(models.Model):
         string="Vendor",
     )
     route_id = fields.Many2one(
-        comodel_name="stock.location.route",
+        comodel_name="stock.route",
         string="Route",
         domain=[("sale_selectable", "=", True)],
         ondelete="restrict",
@@ -37,12 +36,12 @@ class SaleOrderLine(models.Model):
 
     @api.onchange("product_id")
     def _onchange_product_id_vendor(self):
-        if not self.product_id:
-            return
-        if not self.check_valid_vendor(self.vendor_id):
+        if self.vendor_id and not self.check_valid_vendor(self.vendor_id):
             self.vendor_id = False
 
     def check_valid_vendor(self, vendor):
-        return vendor in self.env["res.partner"].search(
-            safe_eval(self.vendor_id_domain)
-        )
+        if not vendor:
+            return False
+        domain = self.vendor_id_domain or []
+        valid_vendors = self.env["res.partner"].search(domain)
+        return vendor in valid_vendors
