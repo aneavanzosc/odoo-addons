@@ -18,7 +18,7 @@
             class="btn-link mb-1 px-0"
             icon="fa-refresh"
             confirm="This will update all order lines with this vendor."
-            attrs="{'invisible': ['|', ('vendor_id', '=', False), ('state', 'in', ['sale', 'done','cancel'])]}"
+            modifiers="{'invisible': ['|', ('vendor_id', '=', False), ('state', 'in', ['sale', 'done','cancel'])]}"
           />
                 </div>
                 <label for="route_id" />
@@ -35,7 +35,7 @@
             class="btn-link mb-1 px-0"
             icon="fa-refresh"
             confirm="This will update all order lines with this route."
-            attrs="{'invisible': ['|', ('route_id', '=', False), ('state', 'in', ['sale', 'done','cancel'])]}"
+            modifiers="{'invisible': ['|', ('route_id', '=', False), ('state', 'in', ['sale', 'done','cancel'])]}"
           />
                 </div>
             </group>

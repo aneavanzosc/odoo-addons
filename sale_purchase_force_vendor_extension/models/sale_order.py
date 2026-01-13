@@ -36,13 +36,11 @@ class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     @api.onchange("product_id")
-    def product_id_change(self):
+    def _onchange_product_id_vendor(self):
         if not self.product_id:
             return
-        result = super().product_id_change()
         if not self.check_valid_vendor(self.vendor_id):
             self.vendor_id = False
-        return result
 
     def check_valid_vendor(self, vendor):
         return vendor in self.env["res.partner"].search(
