@@ -29,7 +29,9 @@ class AccountAnalyticLine(models.Model):
         store=True,
     )
     invoice_reference = fields.Char(
-        string="Invoice Vendor Reference", related="move_line_id.move_id.ref", store=True
+        string="Invoice Vendor Reference",
+        related="move_line_id.move_id.ref",
+        store=True,
     )
     invoice_partner_id = fields.Many2one(
         string="Invoice Partner",
