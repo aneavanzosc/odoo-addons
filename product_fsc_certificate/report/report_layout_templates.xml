@@ -6,9 +6,12 @@
                 <div class="col-10">
                     <div t-field="company.report_footer"/>
                 </div>
-                <div class="col-2">
-                    <img style="max-width: 80px;"
-                         src="/product_fsc_certificate/static/src/img/fsc_certificate.jpeg" alt="FSC certificate"/>
+                <div class="col-2" t-if="o.company_id.fsc_certificate_image">
+                    <img t-if="o.company_id.fsc_certificate_image"
+     t-att-src="image_data_uri(o.company_id.fsc_certificate_image)"
+     style="max-width:80px;"
+     alt="FSC certificate"/>
+
                 </div>
             </div>
             <t t-else="">

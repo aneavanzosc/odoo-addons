@@ -19,6 +19,7 @@
         "views/account_invoice_views.xml",
         "views/sale_order_views.xml",
         "views/stock_picking_views.xml",
+        "views/res_company.xml",
         "report/account_invoice_report_templates.xml",
         "report/sale_order_report_templates.xml",
         "report/stock_picking_report_templates.xml",
