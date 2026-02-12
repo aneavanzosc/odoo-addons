@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <template
+    id="report_invoice_document_hide_without_reference"
+    inherit_id="account_invoice_report_grouped_by_picking.report_invoice_document"
+    priority="110"
+  >
+        <xpath expr="//t[@t-set='lines_grouped']" position="replace">
+            <t
+        t-set="lines_grouped"
+        t-value="[g for g in o.lines_grouped_by_picking() if g.get('picking')]"
+      />
+        </xpath>
+
+    </template>
+
+
+</odoo>
