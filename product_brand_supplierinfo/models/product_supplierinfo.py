@@ -9,15 +9,11 @@ class ProductSupplierinfo(models.Model):
     product_brand_id = fields.Many2one(
         string="Brand", comodel_name="product.brand", copy=False
     )
+
     brand_code = fields.Char(copy=False)
-    brand_marking = fields.Char(
-        string="Brand Marking",
-        related="product_brand_id.marking",
-        store=True,
-        copy=False,
-    )
+
     brand_product_id = fields.Many2one(
-        string="Product Brand", comodel_name="brand.product", copy=False
+        string="Homologation", comodel_name="brand.product", copy=False
     )
 
     @api.onchange("brand_product_id")

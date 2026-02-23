@@ -82,7 +82,7 @@ msgstr "Número de archivos adjuntos"
 #: model:ir.model.fields,field_description:product_brand_supplierinfo.field_product_customerinfo__product_brand_id
 #: model:ir.model.fields,field_description:product_brand_supplierinfo.field_product_supplierinfo__product_brand_id
 msgid "Brand"
-msgstr "Marca"
+msgstr "Fabricante (Marca)"
 
 #. module: product_brand_supplierinfo
 #: model:ir.model.fields,field_description:product_brand_supplierinfo.field_brand_product__brand_code
@@ -91,7 +91,7 @@ msgstr "Marca"
 #: model:ir.model.fields,field_description:product_brand_supplierinfo.field_product_supplierinfo__brand_code
 #: model_terms:ir.ui.view,arch_db:product_brand_supplierinfo.product_supplierinfo_search_view
 msgid "Brand Code"
-msgstr "Código marca"
+msgstr "Referencia fabricante (Marca)"
 
 #. module: product_brand_supplierinfo
 #: model:ir.model.fields,field_description:product_brand_supplierinfo.field_product_customerinfo__brand_marking
@@ -124,7 +124,7 @@ msgstr "Huella marcas"
 #: model:ir.ui.menu,name:product_brand_supplierinfo.stock_brand_action
 #: model:ir.ui.menu,name:product_brand_supplierinfo.stock_brand_menu
 msgid "Brands"
-msgstr "Marcas"
+msgstr "Fabricante (Marca)"
 
 #. module: product_brand_supplierinfo
 #: model:res.groups,name:product_brand_supplierinfo.group_brand_product_manager
@@ -235,6 +235,8 @@ msgid "Has Message"
 msgstr "Tiene mensajes"
 
 #. module: product_brand_supplierinfo
+#: model:ir.model.fields,field_description:product_brand_supplierinfo.field_product_customerinfo__brand_product_id
+#: model:ir.model.fields,field_description:product_brand_supplierinfo.field_product_supplierinfo__brand_product_id
 #: model:ir.model.fields.selection,name:product_brand_supplierinfo.selection__brand_product__state__homologation
 msgid "Homologation"
 msgstr "Homologación"
@@ -416,11 +418,10 @@ msgstr "Producto"
 #: model:ir.model,name:product_brand_supplierinfo.model_product_brand
 #: model:ir.model.fields,field_description:product_brand_supplierinfo.field_brand_product__brand_id
 #: model:ir.model.fields,field_description:product_brand_supplierinfo.field_product_customerinfo__brand_product_id
-#: model:ir.model.fields,field_description:product_brand_supplierinfo.field_product_supplierinfo__brand_product_id
 #: model_terms:ir.ui.view,arch_db:product_brand_supplierinfo.brand_product_form_view
 #: model_terms:ir.ui.view,arch_db:product_brand_supplierinfo.product_supplierinfo_search_view
 msgid "Product Brand"
-msgstr "Marca de producto"
+msgstr "Fabricante (Marca)"
 
 #. module: product_brand_supplierinfo
 #: model:ir.actions.act_window,name:product_brand_supplierinfo.brand_product_action
@@ -428,12 +429,17 @@ msgstr "Marca de producto"
 #: model:ir.ui.menu,name:product_brand_supplierinfo.menu_brand_product
 #: model:ir.ui.menu,name:product_brand_supplierinfo.menu_stock_brand_product
 msgid "Product Brands"
-msgstr "Marcas"
+msgstr "Homologaciones"
 
 #. module: product_brand_supplierinfo
 #: model:ir.model,name:product_brand_supplierinfo.model_product_product
 msgid "Product Variant"
 msgstr "Variante de producto"
+
+#. module: product_brand_supplierinfo
+#: model:ir.ui.menu,name:product_brand_supplierinfo.stock_brand_menu
+msgid "Product homologation brand"
+msgstr "Producto homologación marca"
 
 #. module: product_brand_supplierinfo
 #: model_terms:ir.ui.view,arch_db:product_brand_supplierinfo.wizard_dehomologation_reason_form_view

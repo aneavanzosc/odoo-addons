@@ -26,11 +26,11 @@
     sequence="20"
   />
 
-    <menuitem
+        <menuitem
     id="stock_brand_menu"
-    name="Brands"
-    parent="stock.menu_stock_config_settings"
-    sequence="6"
+    name="Product homologation brand"
+    parent="stock.menu_stock_root"
+    sequence="3"
     groups="product_brand_supplierinfo.group_brand_product_manager"
   />
 

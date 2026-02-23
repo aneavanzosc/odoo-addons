@@ -233,11 +233,6 @@ msgid "Has Message"
 msgstr ""
 
 #. module: product_brand_supplierinfo
-#: model:ir.model.fields.selection,name:product_brand_supplierinfo.selection__brand_product__state__homologation
-msgid "Homologation"
-msgstr ""
-
-#. module: product_brand_supplierinfo
 #: model:ir.model.fields,field_description:product_brand_supplierinfo.field_brand_product__homologation_date
 #: model_terms:ir.ui.view,arch_db:product_brand_supplierinfo.brand_product_filter_view
 msgid "Homologation Date"
@@ -434,6 +429,11 @@ msgid "Product Variant"
 msgstr ""
 
 #. module: product_brand_supplierinfo
+#: model:ir.ui.menu,name:product_brand_supplierinfo.stock_brand_menu
+msgid "Product homologation brand"
+msgstr ""
+
+#. module: product_brand_supplierinfo
 #: model_terms:ir.ui.view,arch_db:product_brand_supplierinfo.wizard_dehomologation_reason_form_view
 msgid "Put Dehomologation Reason"
 msgstr ""
@@ -470,8 +470,10 @@ msgid "Set to Dehomologation"
 msgstr ""
 
 #. module: product_brand_supplierinfo
-#: model_terms:ir.ui.view,arch_db:product_brand_supplierinfo.brand_product_form_view
-msgid "Set to Homologation"
+#: model:ir.model.fields,field_description:product_brand_supplierinfo.field_product_customerinfo__brand_product_id
+#: model:ir.model.fields,field_description:product_brand_supplierinfo.field_product_supplierinfo__brand_product_id
+#: model:ir.model.fields.selection,name:product_brand_supplierinfo.selection__brand_product__state__homologation
+msgid "Homologation"
 msgstr ""
 
 #. module: product_brand_supplierinfo
