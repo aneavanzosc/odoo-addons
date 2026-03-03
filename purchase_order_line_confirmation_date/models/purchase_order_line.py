@@ -6,4 +6,4 @@ from odoo import fields, models
 class PurchaseOrderLine(models.Model):
     _inherit = "purchase.order.line"
 
-    confirmation_date = fields.Date(default=False, copy=False)
+    confirmation_date = fields.Date(string="Requested date", default=False, copy=False)
