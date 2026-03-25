@@ -65,6 +65,12 @@
       >
         <field name="make_ids" widget="many2many_tags" />
       </xpath>
+      <xpath
+        expr="//field[@name='invoice_line_ids']/list/field[@name='related_so_sequence']"
+        position="attributes"
+      >
+        <attribute name="optional">show</attribute>
+      </xpath>
       <field name="invoice_cash_rounding_id" position="before">
         <field name="market_id" string="Sale channel" readonly="1" invisible="1" />
         <field
