@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 08:26+0000\n"
-"PO-Revision-Date: 2025-04-28 08:26+0000\n"
+"POT-Creation-Date: 2026-01-21 11:04+0000\n"
+"PO-Revision-Date: 2026-01-21 11:04+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -403,6 +403,11 @@ msgid "Add a description..."
 msgstr ""
 
 #. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__adjustment_plates
+msgid "Adjustment Plates"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__amount
 msgid "Amount"
 msgstr ""
@@ -418,28 +423,23 @@ msgid "Annual Amount"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__annual_invoicing
-msgid "Annual Invoicing"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__annual_machine_hour
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__machine_hour_annual
 msgid "Annual Machine Hours"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__annual_purchase_cost
-msgid "Annual Purchase Cost"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__annual_value_added
-msgid "Annual Value Added"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__assembly
 msgid "Assembly"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__assembly_cost
+msgid "Assembly Cost"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__assembly_cost_unit
+msgid "Assembly Cost per Unit"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -449,7 +449,17 @@ msgstr ""
 
 #. module: thermoformed_cost_calculation
 #: model_terms:ir.ui.view,arch_db:thermoformed_cost_calculation.view_thermoformed_cost_form
+msgid "Back to Draft"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model_terms:ir.ui.view,arch_db:thermoformed_cost_calculation.view_thermoformed_cost_form
 msgid "Block"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__box_cost
+msgid "Box Cost"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -488,11 +498,6 @@ msgid "Company"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_assembly_unit
-msgid "Cost Assembly per Unit"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__cost_sales
 msgid "Cost Over Sale"
 msgstr ""
@@ -503,40 +508,13 @@ msgid "Cost and Price"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_box
-msgid "Cost of the Box"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_hour
-msgid "Costs Hour"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_res_company__costs_mechanic
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_mechanic
 msgid "Costs Mechanic"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_res_company__costs_operator
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_operator
 msgid "Costs Operator"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_plate
-msgid "Costs Plate"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_assembly
-msgid "Costs per Assembly"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_unit
-msgid "Costs per Unit Manufactured"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -576,7 +554,7 @@ msgstr ""
 
 #. module: thermoformed_cost_calculation
 #. odoo-python
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
+#: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #, python-format
 msgid "Deleting is only possible in case of draft"
@@ -609,8 +587,8 @@ msgid "Draft"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_kilo
-msgid "Euros per Kilo"
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__failed_message_ids
+msgid "Failed Messages"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -659,21 +637,10 @@ msgid "Has Message"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__hide_button
-msgid "Hide button"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
 #. odoo-python
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #, python-format
 msgid "Hour machine per serie can not be 0."
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__hour_machine_serie
-msgid "Hours Machine per Serie"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -700,6 +667,11 @@ msgstr ""
 #. module: thermoformed_cost_calculation
 #: model:ir.model.fields,help:thermoformed_cost_calculation.field_thermoformed_cost__message_has_error
 msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__invoicing_annual
+msgid "Invoicing Annual"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -736,8 +708,18 @@ msgid "Logo"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__machine_hour_serie
+msgid "Machine Hours per Serie"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__message_main_attachment_id
 msgid "Main Attachment"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__manufacturing_cost_unit
+msgid "Manufacturing Cost per Unit"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -759,6 +741,16 @@ msgstr ""
 #. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__product_id
 msgid "Material"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__material_cost
+msgid "Material Cost Price"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__mechanic_cost
+msgid "Mechanic Cost"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -784,16 +776,21 @@ msgstr ""
 
 #. module: thermoformed_cost_calculation
 #. odoo-python
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
+#: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
+#: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
+#: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
+#: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #, python-format
 msgid "New"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -809,6 +806,16 @@ msgstr ""
 #. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__activity_type_id
 msgid "Next Activity Type"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__non_conformity_ids
+msgid "Non Conformity"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__non_conformity_count
+msgid "Non Conformity Count"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -832,8 +839,23 @@ msgid "Number of messages with delivery error"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__operator_cost
+msgid "Operator Cost"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__operator
 msgid "Operators"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__packaging_cost
+msgid "Packaging Cost"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__packaging_cost_unit
+msgid "Packaging Cost Unit"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -842,8 +864,8 @@ msgid "Packaging and transportation costs"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_pallet
-msgid "Pallet Costs"
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__pallet_cost
+msgid "Pallet Cost"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -852,7 +874,7 @@ msgid "Pallet Reference"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_pallet_transport
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__pallet_transport_cost
 msgid "Pallet Transport Cost"
 msgstr ""
 
@@ -868,20 +890,24 @@ msgstr ""
 
 #. module: thermoformed_cost_calculation
 #. odoo-python
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #, python-format
 msgid "Plate per hour and figure can not be 0."
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__plate_weight_serie
-msgid "Plate weight per serie"
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__plate_cost
+msgid "Plate's cost"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__plate_hour
 msgid "Plates in hour"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__box_quantity
+msgid "Plates per Box"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -900,24 +926,28 @@ msgid "Product Variant"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__purchase_cost_annual
+msgid "Purchase Cost Annual"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__purchase_cost_unit
+msgid "Purchase Cost Unit"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__purchase_cost_serie
 msgid "Purchase Cost per Serie"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__code
-#: model_terms:ir.ui.view,arch_db:thermoformed_cost_calculation.view_thermoformed_cost_search
 msgid "Reference"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
 #: model_terms:ir.ui.view,arch_db:thermoformed_cost_calculation.view_thermoformed_cost_search
 msgid "Reference Product"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model_terms:ir.ui.view,arch_db:thermoformed_cost_calculation.view_thermoformed_cost_form
-msgid "Reset To Draft"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -942,8 +972,12 @@ msgid "Sales Order"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__serie_weight
+msgid "Serie Weight"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
 #. odoo-python
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #, python-format
 msgid "Serie can not be 0."
@@ -955,12 +989,8 @@ msgid "Series"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model_terms:ir.ui.view,arch_db:thermoformed_cost_calculation.view_thermoformed_cost_search
-msgid "State"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__state
+#: model_terms:ir.ui.view,arch_db:thermoformed_cost_calculation.view_thermoformed_cost_search
 msgid "Status"
 msgstr ""
 
@@ -980,8 +1010,22 @@ msgid "Step"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
+#: model:ir.model.constraint,message:thermoformed_cost_calculation.constraint_thermoformed_cost_adjustment_plates_positive
+msgid "The adjustment plates must be strictly positive."
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.constraint,message:thermoformed_cost_calculation.constraint_thermoformed_cost_box_pallet_positive
+msgid "The box pallet value must be strictly positive."
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.constraint,message:thermoformed_cost_calculation.constraint_thermoformed_cost_box_quantity_positive
+msgid "The box quantity must be strictly positive."
+msgstr ""
+
+#. module: thermoformed_cost_calculation
 #. odoo-python
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #, python-format
 msgid "The figure can not be 0."
@@ -989,15 +1033,23 @@ msgstr ""
 
 #. module: thermoformed_cost_calculation
 #. odoo-python
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #, python-format
 msgid "The figure quantity cannot be 0."
 msgstr ""
 
 #. module: thermoformed_cost_calculation
+#: model:ir.model.constraint,message:thermoformed_cost_calculation.constraint_thermoformed_cost_figure_positive
+msgid "The figure value must be strictly positive."
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.constraint,message:thermoformed_cost_calculation.constraint_thermoformed_cost_name_unique
+msgid "The name must be unique!"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
 #. odoo-python
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #, python-format
 msgid "The number of figures or the number of plates per hour can not be 0."
@@ -1005,20 +1057,32 @@ msgstr ""
 
 #. module: thermoformed_cost_calculation
 #. odoo-python
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #, python-format
 msgid "The number of series can not be 0."
 msgstr ""
 
 #. module: thermoformed_cost_calculation
+#: model:ir.model.constraint,message:thermoformed_cost_calculation.constraint_thermoformed_cost_plate_hour_positive
+msgid "The plate hour value must be strictly positive."
+msgstr ""
+
+#. module: thermoformed_cost_calculation
 #. odoo-python
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
-#: code:addons/temp-addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #: code:addons/thermoformed_cost_calculation/models/thermoformed_cost.py:0
 #, python-format
 msgid "The quantity of boxes or the number of boxes per pallet can not be 0."
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.constraint,message:thermoformed_cost_calculation.constraint_thermoformed_cost_serie_positive
+msgid "The serie value must be strictly positive."
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.constraint,message:thermoformed_cost_calculation.constraint_thermoformed_cost_waste_percentage_is_percentage
+msgid "The waste percentage must be positive or 0 at least."
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -1051,18 +1115,8 @@ msgid "Thermoformed Count"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model_terms:ir.ui.view,arch_db:thermoformed_cost_calculation.view_thermoformed_cost_search
-msgid "Thermoformed Name"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
 #: model:ir.actions.report,name:thermoformed_cost_calculation.action_report_thermoformed
 msgid "Thermoformed Report"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model_terms:ir.ui.view,arch_db:thermoformed_cost_calculation.view_thermoformed_cost_search
-msgid "Thermoformed State"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -1071,18 +1125,13 @@ msgid "Thickness"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__transport_cost_unit
+msgid "Transport Cost Unit"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
 #: model:ir.model.fields,help:thermoformed_cost_calculation.field_thermoformed_cost__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__unit_costs_packaging
-msgid "Unit Packaging Cost"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__unit_purchase_cost
-msgid "Unit Purchase Cost"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -1091,13 +1140,8 @@ msgid "Unit Retail Price"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__costs_transport_unit
-msgid "Unit Transport Cost"
-msgstr ""
-
-#. module: thermoformed_cost_calculation
-#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__box_quantity
-msgid "Units per Box"
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__value_added_annual
+msgid "Value Added Annual"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -1108,6 +1152,11 @@ msgstr ""
 #. module: thermoformed_cost_calculation
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__value_added_serie
 msgid "Value Added per Serie"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__waste_percentage
+msgid "Waste Percentage"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
@@ -1140,6 +1189,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_frame__workcenter_id
 #: model_terms:ir.ui.view,arch_db:thermoformed_cost_calculation.view_thermoformed_cost_search
 msgid "Workcenter"
+msgstr ""
+
+#. module: thermoformed_cost_calculation
+#: model:ir.model.fields,field_description:thermoformed_cost_calculation.field_thermoformed_cost__workcenter_cost
+msgid "Workcenter Cost"
 msgstr ""
 
 #. module: thermoformed_cost_calculation
