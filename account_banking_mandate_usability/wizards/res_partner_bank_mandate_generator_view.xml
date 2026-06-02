@@ -10,15 +10,15 @@
                         <field name="mandate_format" />
                         <field
               name="mandate_type"
-              attrs="{'invisible': [('mandate_format', '!=', 'sepa')], 'required': [('mandate_format', '=', 'sepa')]}"
+              modifiers="{'invisible': [('mandate_format', '!=', 'sepa')], 'required': [('mandate_format', '=', 'sepa')]}"
             />
                         <field
               name="mandate_scheme"
-              attrs="{'invisible': [('mandate_format', '!=', 'sepa')], 'required': [('mandate_format', '=', 'sepa')]}"
+              modifiers="{'invisible': [('mandate_format', '!=', 'sepa')], 'required': [('mandate_format', '=', 'sepa')]}"
             />
                         <field
               name="mandate_recurrent_sequence_type"
-              attrs="{'invisible': ['|', ('mandate_type', '=', 'oneoff'), ('mandate_format', '!=', 'sepa')], 'required': [('mandate_type', '=', 'recurrent')]}"
+              modifiers="{'invisible': ['|', ('mandate_type', '=', 'oneoff'), ('mandate_format', '!=', 'sepa')], 'required': [('mandate_type', '=', 'recurrent')]}"
             />
                         <field name="signed" />
                         <field name="validate" />
