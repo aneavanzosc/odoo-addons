@@ -37,7 +37,6 @@ class AccountAssetLineImport(models.Model):
         states={"done": [("readonly", True)]},
     )
     update_data = fields.Boolean(
-        string="Update Data",
         default=False,
         states={"done": [("readonly", True)]},
     )
@@ -97,14 +96,14 @@ class AccountAssetLineImport(models.Model):
         return action_dict
 
     def action_validate(self):
-        result = super(AccountAssetLineImport, self).action_validate()
+        result = super().action_validate()
         for line in self.import_line_ids.filtered(
             lambda c: c.state not in ("error", "done")
         ):
             log_info = ""
             if line.account_asset_id and line.date and line.amount:
                 same_asset_lines = self.import_line_ids.filtered(
-                    lambda c: c.account_asset_id == line.account_asset_id
+                    lambda c, asset=line.account_asset_id: c.account_asset_id == asset
                 )
                 if same_asset_lines:
                     if any([line.state == "error" for line in same_asset_lines]):
@@ -150,12 +149,10 @@ class AccountAssetLineImportLine(models.Model):
         comodel_name="account.asset",
     )
     account_asset_ref = fields.Char(
-        string="Account Asset Ref",
         states={"done": [("readonly", True)]},
         copy=False,
     )
     account_asset_name = fields.Char(
-        string="Account Asset Name",
         states={"done": [("readonly", True)]},
         copy=False,
     )
@@ -165,7 +162,6 @@ class AccountAssetLineImportLine(models.Model):
         copy=False,
     )
     purchase_value = fields.Float(
-        string="Purchase Value",
         states={"done": [("readonly", True)]},
         copy=False,
     )
@@ -179,17 +175,14 @@ class AccountAssetLineImportLine(models.Model):
         copy=False,
     )
     date = fields.Date(
-        string="Date",
         states={"done": [("readonly", True)]},
         copy=False,
     )
     amount = fields.Float(
-        string="Amount",
         states={"done": [("readonly", True)]},
         copy=False,
     )
     account_analytic = fields.Char(
-        string="Account Analytic",
         states={"done": [("readonly", True)]},
         copy=False,
     )
