@@ -9,6 +9,7 @@
     "license": "AGPL-3",
     "depends": [
         "account",
+        "account_invoice_line_report",
     ],
     "data": ["report/account_invoice_report_view.xml"],
     "installable": True,
