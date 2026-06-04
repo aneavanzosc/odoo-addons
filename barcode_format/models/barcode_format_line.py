@@ -22,7 +22,14 @@ class BarcodeFormatLine(models.Model):
         default=0,
     )
 
-    gs1_barcode_id = fields.Many2one("gs1_barcode", string="GS1 Prefix")
+    decimal_position = fields.Integer(
+        string="posición decimal",
+    )
+
+    gs1_rule_id = fields.Many2one(
+        "barcode.rule",
+        string="GS1 Prefix"
+    )
 
     format_type = fields.Selection(
         [("fijo", "Fijo"), ("variable", "Variable")],

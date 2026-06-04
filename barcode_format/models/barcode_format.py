@@ -4,7 +4,6 @@ from odoo import api, fields, models
 class BarcodeFormat(models.Model):
     _name = "barcode.format"
     _description = "Barcode Format"
-
     name = fields.Char(string="Format", required=True)
 
     type = fields.Selection(
@@ -53,3 +52,6 @@ class BarcodeFormat(models.Model):
             pass
         elif self.type == "variable":
             self.line_ids = [(5, 0, 0)]
+
+
+  

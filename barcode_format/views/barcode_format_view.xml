@@ -20,20 +20,21 @@
                     <field name="model_name" invisible="1" />
                     <field
             name="line_ids"
-            attrs="{'invisible': [('type', '=', False)]}"
+            invisible="not type"
           >
-                        <tree editable="bottom">
-                            <field name="format_type" invisible="1" />
+                        <list editable="bottom">
                             <field
                 name="field_id"
                 domain="[('model', '=', parent.model_name)]"
               />
                             <field name="start_pos" string="Start Position" />
                             <field name="final_pos" string="End Position" />
-                            <field name="gs1_barcode_id" string="GS1 Prefix" />
+                            <field name="gs1_rule_id" string="GS1 Prefix" />
                             <field name="decimals" string="Decimals" />
+                            <field name="decimal_position" string="Posición decimal" />
 
-                        </tree>
+
+                        </list>
 
                     </field>
 
@@ -46,12 +47,12 @@
         <field name="name">barcode.format.tree</field>
         <field name="model">barcode.format</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name" />
                 <field name="type" />
                 <field name="model_id" />
                 <field name="partner_ids" />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -89,24 +90,24 @@
         <field name="name">barcode.format.line.tree</field>
         <field name="model">barcode.format.line</field>
         <field name="arch" type="xml">
-            <tree editable="bottom">
+            <list editable="bottom">
                 <field name="format_id" />
                 <field name="format_type" />
                 <field name="format_model_id" />
                 <field name="field_id" />
                 <field
           name="start_pos"
-          attrs="{'invisible': [('format_type', '!=', 'fijo')]}"
+          invisible="format_type != 'fijo'"
         />
                 <field
           name="final_pos"
-          attrs="{'invisible': [('format_type', '!=', 'fijo')]}"
+          invisible="format_type != 'fijo'"
         />
                 <field
-          name="gs1_barcode_id"
-          attrs="{'invisible': [('format_type', '!=', 'variable')]}"
+          name="gs1_rule_id"
+          invisible="format_type != 'variable'"
         />
-            </tree>
+            </list>
         </field>
     </record>
 
@@ -136,14 +137,14 @@
     <record id="action_barcode_format" model="ir.actions.act_window">
         <field name="name">Barcode Format</field>
         <field name="res_model">barcode.format</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id" ref="view_barcode_format_search" />
     </record>
 
     <record id="action_barcode_format_line" model="ir.actions.act_window">
         <field name="name">Format Lines</field>
         <field name="res_model">barcode.format.line</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">list</field>
         <field name="search_view_id" ref="view_barcode_format_line_search" />
     </record>
 

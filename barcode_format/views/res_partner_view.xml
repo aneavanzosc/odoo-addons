@@ -9,15 +9,15 @@
                  <page string="Barcode Format">
                     <field
             name="barcode_format_ids"
-            mode="tree,form"
+            mode="list,form"
             readonly="0"
-            context="{'default_partner_ids': [active_id]}"
+            context="{'default_partner_ids': [id]}"
           >
-                        <tree>
+                        <list>
                             <field name="name" />
                             <field name="type" />
                             <field name="model_id" />
-                        </tree>
+                        </list>
                     </field>
                 </page>
             </xpath>

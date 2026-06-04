@@ -1,6 +1,6 @@
 {
     "name": "Barcode Format",
-    "version": "14.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Inventory",
     "license": "AGPL-3",
     "author": "AvanzOSC",
@@ -9,7 +9,7 @@
         "base",
         "stock",
         "contacts",
-        "base_gs1_barcode",
+        "barcodes",
     ],
     "data": [
         "security/ir.model.access.csv",
