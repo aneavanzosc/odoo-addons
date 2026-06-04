@@ -6,9 +6,7 @@ class BarcodeFormat(models.Model):
     _description = "Barcode Format"
     name = fields.Char(string="Format", required=True)
 
-    type = fields.Selection(
-        [("fijo", "Fijo"), ("variable", "Variable")], string="Type", required=True
-    )
+    type = fields.Selection([("fijo", "Fijo"), ("variable", "Variable")], required=True)
 
     model_id = fields.Many2one(
         "ir.model",
@@ -29,17 +27,13 @@ class BarcodeFormat(models.Model):
         default=lambda self: self.env.context.get("default_partner_ids", []),
     )
 
-    company_id = fields.Many2one(
-        "res.company", string="Company", default=lambda self: self.env.company
-    )
+    company_id = fields.Many2one("res.company", default=lambda self: self.env.company)
 
     line_ids = fields.One2many(
         "barcode.format.line", "format_id", string="Format lines"
     )
 
-    model_name = fields.Char(
-        string="Model name", compute="_compute_model_name", store=True
-    )
+    model_name = fields.Char(compute="_compute_model_name", store=True)
 
     @api.depends("model_id")
     def _compute_model_name(self):
@@ -52,6 +46,3 @@ class BarcodeFormat(models.Model):
             pass
         elif self.type == "variable":
             self.line_ids = [(5, 0, 0)]
-
-
-  
