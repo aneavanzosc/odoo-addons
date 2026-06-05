@@ -25,7 +25,9 @@ class StockMoveLine(models.Model):
         return barcode_formats
 
     def search_format_line(self, barcode_format, field_name):
-        line = barcode_format.line_ids.filtered(lambda l: l.field_id.name == field_name)
+        line = barcode_format.line_ids.filtered(
+            lambda line_item: line_item.field_id.name == field_name
+        )
         if not line:
             raise ValidationError(
                 _("This format has no line for '%s' field") % field_name
@@ -43,107 +45,134 @@ class StockMoveLine(models.Model):
         pos = line.decimal_position - 1
         if pos < 0 or pos >= len(reader):
             return None
-        value = reader[pos:pos + 1]
+        value = reader[pos : pos + 1]
         return int(value) if value.isdigit() else None
-   
-    @api.onchange("reader_ps")
-    def onchange_reader_ps(self):
-        if self.reader_ps:
 
-            barcode_formats = self.search_barcode_format(
-                model=self._name,
-                partner_id=self.picking_id.partner_id.id,
-                company_id=self.env.company.id,
+    def _get_barcode_formats_ps(self):
+        barcode_formats = self.search_barcode_format(
+            model=self._name,
+            partner_id=self.picking_id.partner_id.id,
+            company_id=self.env.company.id,
+        )
+
+        if not barcode_formats:
+            raise ValidationError(
+                _(
+                    "No barcode format configured"
+                    "for this model and customer was found."
+                )
             )
 
+        return barcode_formats
 
-            if not barcode_formats:
+    def _prepare_product_temp_fields_ps(self, barcode_format, temp_fields):
+        try:
+            product_line = self.search_format_line(barcode_format, "product_id")
+            product_code = self.get_value_from_line(product_line, self.reader_ps)
+
+            product = self.env["product.product"].search(
+                [
+                    "|",
+                    ("default_code", "=", product_code),
+                    ("barcode", "=", product_code),
+                ],
+                limit=1,
+            )
+
+            if not product:
                 raise ValidationError(
-                    _(
-                        "No barcode format configured"
-                        "for this model and customer was found."
-                    )
+                    _("No product with code or barcode '%s' was found in Odoo.")
+                    % product_code
                 )
-            for barcode_format in barcode_formats:
-                temp_fields = {}
-                success = True
-                try:
-                    product_line = self.search_format_line(barcode_format, "product_id")
-                    product_code = self.get_value_from_line(
-                        product_line, self.reader_ps
-                    )
-                    product = self.env["product.product"].search(
-                        [
-                            "|",
-                            ("default_code", "=", product_code),
-                            ("barcode", "=", product_code),
-                        ],
-                        limit=1,
-                    )
 
-                    if not product:
-                        raise ValidationError(
-                            _("No product with code or barcode '%s' was found in Odoo.")
-                            % product_code
-                        )
+            temp_fields["product_id"] = product.id
 
-                    temp_fields["product_id"] = product.id
+            if product.tracking != "none":
+                lot_line = self.search_format_line(barcode_format, "lot_name")
+                temp_fields["lot_name"] = self.get_value_from_line(
+                    lot_line, self.reader_ps
+                )
 
-                    if product.tracking != "none":
-                        lot_line = self.search_format_line(barcode_format, "lot_name")
-                        temp_fields["lot_name"] = self.get_value_from_line(
-                            lot_line, self.reader_ps
-                        )
+        except Exception:
+            return False
 
-                except Exception:
-                    success = False
+        return True
 
-                for line in barcode_format.line_ids:
-                    field_name = line.field_id.name
-                    if not field_name or field_name in ["product_id", "lot_name"]:
-                        continue
-                    try:
-                        value = self.get_value_from_line(line, self.reader_ps)
-                        field = self._fields[field_name]
+    def _set_manual_expiration_date_ps(self, field_name, value):
+        raw_value = value.strip()
+        if raw_value:
+            try:
+                dt_value = datetime.strptime(raw_value, "%y%m%d")
+                dt_value = dt_value.replace(hour=0, minute=0, second=0)
+                self[field_name] = dt_value
 
-                        if field_name == "quantity":
-                            decimals = self.get_decimal_value_from_position(
-                                line, self.reader_ps
-                            ) or 0
-                            self[field_name] = float(value) / (10**decimals)
-                        elif field_name == "manual_expiration_date":
-                            raw_value = value.strip()
-                            if raw_value:
-                                try:
-                                    dt_value = datetime.strptime(raw_value, "%y%m%d")
-                                    dt_value = dt_value.replace(
-                                        hour=0, minute=0, second=0
-                                    )
-                                    self[field_name] = dt_value
+            except ValueError as err:
+                raise ValidationError(
+                    _("The date '%s' does not have a valid format.") % raw_value
+                ) from err
 
-                                except ValueError:
-                                    raise ValidationError(
-                                        f"The date '{raw_value}' does not have a valid format."
-                                    )
+    def _set_quantity_value_ps(self, line, field_name, value):
+        decimals = self.get_decimal_value_from_position(line, self.reader_ps) or 0
+        self[field_name] = float(value) / (10**decimals)
 
-                        elif field.type == "float":
-                            self[field_name] = float(value)
-                        elif field.type == "integer":
-                            self[field_name] = int(value)
-                        else:
-                            self[field_name] = value
+    def _set_reader_ps_line_value(self, line):
+        field_name = line.field_id.name
+        value = self.get_value_from_line(line, self.reader_ps)
+        field = self._fields[field_name]
 
-                    except Exception:
-                        success = False
-                        break
+        if field_name == "quantity":
+            self._set_quantity_value_ps(line, field_name, value)
+        elif field_name == "manual_expiration_date":
+            self._set_manual_expiration_date_ps(field_name, value)
+        elif field.type == "float":
+            self[field_name] = float(value)
+        elif field.type == "integer":
+            self[field_name] = int(value)
+        else:
+            self[field_name] = value
 
-                if success:
-                    for f, v in temp_fields.items():
-                        self[f] = v
-                    break
-                else:
-                    for f in temp_fields.keys():
-                        self[f] = False
+    def _process_barcode_format_lines_ps(self, barcode_format):
+        for line in barcode_format.line_ids:
+            field_name = line.field_id.name
+            if not field_name or field_name in ["product_id", "lot_name"]:
+                continue
+
+            try:
+                self._set_reader_ps_line_value(line)
+
+            except Exception:
+                return False
+
+        return True
+
+    def _apply_temp_fields_ps(self, temp_fields):
+        for field_name, value in temp_fields.items():
+            self[field_name] = value
+
+    def _clear_temp_fields_ps(self, temp_fields):
+        for field_name in temp_fields.keys():
+            self[field_name] = False
+
+    @api.onchange("reader_ps")
+    def onchange_reader_ps(self):
+        if not self.reader_ps:
+            return
+
+        barcode_formats = self._get_barcode_formats_ps()
+
+        for barcode_format in barcode_formats:
+            temp_fields = {}
+
+            success = self._prepare_product_temp_fields_ps(barcode_format, temp_fields)
+
+            if not self._process_barcode_format_lines_ps(barcode_format):
+                success = False
+
+            if success:
+                self._apply_temp_fields_ps(temp_fields)
+                break
+
+            self._clear_temp_fields_ps(temp_fields)
 
     @api.model_create_multi
     def create(self, vals_list):
