@@ -37,6 +37,15 @@ class StockMoveLine(models.Model):
         end = line.final_pos
         return reader[start:end]
 
+    def get_decimal_value_from_position(self, line, reader):
+        if not line.decimal_position:
+            return None
+        pos = line.decimal_position - 1
+        if pos < 0 or pos >= len(reader):
+            return None
+        value = reader[pos:pos + 1]
+        return int(value) if value.isdigit() else None
+   
     @api.onchange("reader_ps")
     def onchange_reader_ps(self):
         if self.reader_ps:
@@ -46,6 +55,7 @@ class StockMoveLine(models.Model):
                 partner_id=self.picking_id.partner_id.id,
                 company_id=self.env.company.id,
             )
+
 
             if not barcode_formats:
                 raise ValidationError(
@@ -96,8 +106,10 @@ class StockMoveLine(models.Model):
                         value = self.get_value_from_line(line, self.reader_ps)
                         field = self._fields[field_name]
 
-                        if field_name == "qty_done":
-                            decimals = getattr(line, "decimals", 0) or 0
+                        if field_name == "quantity":
+                            decimals = self.get_decimal_value_from_position(
+                                line, self.reader_ps
+                            ) or 0
                             self[field_name] = float(value) / (10**decimals)
                         elif field_name == "manual_expiration_date":
                             raw_value = value.strip()

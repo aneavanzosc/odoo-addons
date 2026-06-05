@@ -16,9 +16,7 @@
           name="reader_ps"
           context="{'from_stock_picking': True}"
           optional="show"
-          attrs="{
-                      'invisible': [('picking_type_code','not in',('incoming','outgoing'))]
-                    }"
+          invisible="picking_type_code not in ('incoming', 'outgoing')"
         />
             </field>
         </field>
@@ -36,9 +34,7 @@
                <field
           name="reader_ps"
           context="{'from_stock_picking': True}"
-          attrs="{
-                        'invisible': [('picking_type_code','not in',('incoming','outgoing'))]
-                      }"
+          invisible="picking_type_code not in ('incoming', 'outgoing')"
         />
             </xpath>
         </field>
@@ -53,9 +49,7 @@
           name="reader_ps"
           context="{'from_stock_picking': True}"
           optional="show"
-          attrs="{
-                      'invisible': [('picking_type_code','not in',('incoming','outgoing'))]
-                    }"
+          invisible="picking_type_code not in ('incoming', 'outgoing')"
         />
             </field>
         </field>
