@@ -1,1 +1,1 @@
-from . import pricelist_item
+from . import product_pricelist_item

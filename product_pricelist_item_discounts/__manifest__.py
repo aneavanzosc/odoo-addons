@@ -1,18 +1,21 @@
-# Copyright 2023 Leire Martinez de Santos - AvanzOSC
-# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
+# Copyright 2025 Ane Gurruchaga - AvanzOSC
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
 {
-    "name": "Product Pricelist Item discounts",
-    "version": "12.0.1.0.0",
+    "name": "Product Pricelist Item Discounts",
+    "version": "18.0.1.0.0",
+    "category": "Sales/Sales",
     "license": "AGPL-3",
+    "author": "AvanzOSC",
+    "website": "https://github.com/avanzosc/odoo-addons",
     "depends": [
         "product",
         "product_pricelist_item_menu",
+        "product_pricelist_import_hlc",
     ],
-    "author": "AvanzOSC",
-    "website": "http://www.avanzosc.es",
-    "category": "Sales",
     "data": [
-        "wizards/pricelist_item_wizard.xml",
+        "wizard/pricelist_item_wizard_views.xml",
     ],
     "installable": True,
+    "application": False,
 }
