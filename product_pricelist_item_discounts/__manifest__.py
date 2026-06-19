@@ -14,6 +14,7 @@
         "product_pricelist_import_hlc",
     ],
     "data": [
+        "security/ir.model.access.csv",
         "wizard/pricelist_item_wizard_views.xml",
     ],
     "installable": True,

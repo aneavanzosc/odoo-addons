@@ -8,11 +8,11 @@ class CreateProductPricelistItemDiscounts(models.TransientModel):
     _name = "create.pricelist.item.discount"
     _description = "Wizard to apply pricelist item discounts"
 
-    discount = fields.Float(string="Discount", required=True)
-    positive = fields.Boolean(string="Positive", help="Apply increment on price")
-    price = fields.Boolean(string="Price", default=True)
-    pvp = fields.Boolean(string="PVP")
-    distribution_price = fields.Boolean(string="Distribution Price")
+    discount = fields.Float(required=True)
+    positive = fields.Boolean(help="Apply increment on price")
+    price = fields.Boolean(default=True)
+    pvp = fields.Boolean()
+    distribution_price = fields.Boolean()
 
     def _get_discount_price_fields(self):
         self.ensure_one()
