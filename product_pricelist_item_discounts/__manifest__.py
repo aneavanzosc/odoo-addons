@@ -7,6 +7,7 @@
     "depends": [
         "product",
         "product_pricelist_item_menu",
+        "acysos_hlc",
     ],
     "author": "AvanzOSC",
     "website": "http://www.avanzosc.es",
