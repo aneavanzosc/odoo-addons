@@ -23,6 +23,10 @@ class ProductPricelistItem(models.Model):
         for record in self:
             values = {}
             for price_field in price_fields:
-                values[price_field] = record._get_discounted_price(
-                    record[price_field], discount, positive=positive)
-            record.write(values)
+                try:
+                    values[price_field] = record._get_discounted_price(
+                        record[price_field], discount, positive=positive)
+                except KeyError:
+                    continue
+            if values:
+                record.write(values)
