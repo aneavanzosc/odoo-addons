@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="account_reconcile_legacy.ReconciliationLegacyView">
+    <div
+      class="o_avanzosc_account_reconcile_legacy"
+      t-ref="root"
+      tabindex="0"
+      t-on-keydown="onKeydown"
+    >
+      <div class="o_legacy_reconciliation_shell">
+        <div class="o_legacy_header">
+          <h1 t-esc="title" />
+          <div class="o_legacy_progress">
+            <div class="o_legacy_progress_bar">
+              <span t-esc="progressLabel" />
+            </div>
+          </div>
+        </div>
+
+        <t t-if="state.isLoading">
+          <div class="o_legacy_empty">Cargando...</div>
+        </t>
+        <t t-elif="!state.groups.length">
+          <div class="o_legacy_empty">No hay apuntes pendientes para conciliar.</div>
+        </t>
+        <t t-else="">
+          <div class="o_legacy_partner_selector">
+            <button
+              class="btn btn-link o_legacy_partner_select"
+              t-on-click="openPartnerSelector"
+              title="Cambiar contacto"
+            >
+              <span t-esc="partnerSelectorLabel" />
+              <i class="fa fa-caret-down" />
+            </button>
+            <button
+              class="btn btn-link o_legacy_open_record_button"
+              t-att-disabled="!selectedGroup"
+              t-on-click="openSelectedGroupRecord"
+              title="Abrir registro"
+            >
+              <i class="fa fa-external-link" />
+            </button>
+            <button
+              class="btn btn-primary o_legacy_validate_button"
+              t-att-disabled="!canReconcile"
+              t-on-click="reconcileSelectedLines"
+            >
+                            CONCILIAR
+                        </button>
+          </div>
+
+          <t t-foreach="state.groups" t-as="group" t-key="group.id">
+            <section
+              t-att-class="{
+                                'o_legacy_statement': true,
+                                'o_legacy_statement_open': group.id === state.selectedGroupId,
+                                'o_legacy_statement_closed': group.id !== state.selectedGroupId,
+                            }"
+            >
+              <div
+                class="o_legacy_statement_title"
+                t-if="group.id !== state.selectedGroupId"
+              >
+                <span t-esc="group.displayName" />
+                <span>Seleccione un asociado o elija una contrapartida</span>
+              </div>
+
+              <div
+                class="o_legacy_line o_legacy_line_main"
+                t-on-click="() => this.selectGroup(group.id)"
+              >
+                <button
+                  class="btn btn-link o_legacy_cog_button"
+                  title="Abrir conciliación"
+                  t-on-click="(ev) => this.toggleGroup(group.id, ev)"
+                >
+                  <i class="fa fa-cog" />
+                </button>
+                <span t-esc="group.accountLabel || group.account_id[1]" />
+                <span t-esc="group.date || ''" />
+                <span class="o_legacy_label" t-esc="group.label || group.displayName" />
+                <span class="o_legacy_amount" t-esc="group.amountLabel || ''" />
+                <span class="fa fa-info-circle text-muted" />
+              </div>
+
+              <t t-if="group.id === state.selectedGroupId">
+                <t t-if="!state.lines.length">
+                  <div class="o_legacy_hint">
+                                        <i
+                    class="fa fa-play"
+                  /> No hay apuntes abiertos para este grupo.
+                                    </div>
+                </t>
+                <t t-else="">
+                  <t t-foreach="selectedLines" t-as="line" t-key="line.id">
+                    <div
+                      t-att-class="{
+                                                'o_legacy_line': true,
+                                                'o_legacy_selected_line': true,
+                                                'o_legacy_bank_counterpart': line.isCounterpart,
+                                            }"
+                      t-on-click="() => this.toggleLine(line.id)"
+                      title="Quitar de la conciliación"
+                    >
+                      <span>
+                        <i
+                          class="fa fa-minus o_legacy_line_action o_legacy_remove_line"
+                        />
+                      </span>
+                      <span t-esc="line.account_id[1]" />
+                      <span t-esc="line.date" />
+                      <span class="o_legacy_label" t-esc="line.label" />
+                      <span class="o_legacy_amount" t-esc="line.amountLabel" />
+                      <span class="fa fa-info-circle text-muted" />
+                    </div>
+                  </t>
+
+                  <div
+                    class="o_legacy_hint o_legacy_toggle_hint"
+                    t-on-click="toggleMatchPanel"
+                    title="Mostrar u ocultar contrapartidas"
+                  >
+                    <i
+                      t-att-class="state.isMatchPanelOpen ? 'fa fa-caret-down' : 'fa fa-play'"
+                    />
+                    <span>Seleccione contrapartida o Cree un Descuadre</span>
+                    <span class="o_legacy_hint_amount" t-esc="differenceHintLabel" />
+                  </div>
+
+                  <t t-if="state.isMatchPanelOpen">
+                    <div class="o_legacy_match_panel" t-if="candidateLines.length">
+                      <div class="o_legacy_filter">
+                        <span>Filtro...</span>
+                        <i class="fa fa-search" />
+                      </div>
+                      <t t-foreach="candidateLines" t-as="line" t-key="line.id">
+                        <div
+                          class="o_legacy_line o_legacy_candidate_line"
+                          t-on-click="() => this.toggleLine(line.id)"
+                          title="Añadir a la conciliación"
+                        >
+                          <span>
+                            <i
+                              class="fa fa-plus o_legacy_line_action o_legacy_add_line"
+                            />
+                          </span>
+                          <span t-esc="line.account_id[1]" />
+                          <span t-esc="line.date" />
+                          <span class="o_legacy_label" t-esc="line.label" />
+                          <span class="o_legacy_amount" t-esc="line.amountLabel" />
+                          <span class="fa fa-info-circle text-muted" />
+                        </div>
+                      </t>
+                    </div>
+
+                    <div class="o_legacy_manual_panel">
+                      <button
+                        class="btn btn-link o_legacy_panel_cog"
+                        disabled="disabled"
+                      >
+                        <i class="fa fa-cog" />
+                      </button>
+                      <div class="o_legacy_form_grid">
+                        <label>Cuenta</label>
+                        <div class="o_legacy_field">
+                          <select
+                            t-att-value="state.manualForm.accountId || ''"
+                            t-on-change="(ev) => this.updateManualSelection('account', 'accounts', ev)"
+                          >
+                            <option value="" />
+                            <t
+                              t-foreach="state.options.accounts"
+                              t-as="account"
+                              t-key="account.id"
+                            >
+                              <option
+                                t-att-value="account.id"
+                                t-esc="account.display_name"
+                              />
+                            </t>
+                          </select>
+                        </div>
+                        <label>Diario</label>
+                        <div class="o_legacy_field">
+                          <select
+                            t-att-value="state.manualForm.journalId || ''"
+                            t-on-change="(ev) => this.updateManualSelection('journal', 'journals', ev)"
+                          >
+                            <option value="" />
+                            <t
+                              t-foreach="state.options.journals"
+                              t-as="journal"
+                              t-key="journal.id"
+                            >
+                              <option
+                                t-att-value="journal.id"
+                                t-esc="journal.display_name"
+                              />
+                            </t>
+                          </select>
+                        </div>
+                        <label>Impuesto</label>
+                        <div class="o_legacy_field">
+                          <select
+                            t-att-value="state.manualForm.taxId || ''"
+                            t-on-change="(ev) => this.updateManualSelection('tax', 'taxes', ev)"
+                          >
+                            <option value="" />
+                            <t
+                              t-foreach="state.options.taxes"
+                              t-as="tax"
+                              t-key="tax.id"
+                            >
+                              <option t-att-value="tax.id" t-esc="tax.display_name" />
+                            </t>
+                          </select>
+                        </div>
+                        <label>Etiqueta</label>
+                        <div class="o_legacy_field o_legacy_text_field">
+                          <input
+                            type="text"
+                            t-att-value="state.manualForm.label"
+                            t-on-input="(ev) => this.updateManualForm('label', ev)"
+                          />
+                        </div>
+                        <label>Cuenta analítica</label>
+                        <div class="o_legacy_field">
+                          <select
+                            t-att-value="state.manualForm.analyticAccountId || ''"
+                            t-on-change="(ev) => this.updateManualSelection('analyticAccount', 'analyticAccounts', ev)"
+                          >
+                            <option value="" />
+                            <t
+                              t-foreach="state.options.analyticAccounts"
+                              t-as="analyticAccount"
+                              t-key="analyticAccount.id"
+                            >
+                              <option
+                                t-att-value="analyticAccount.id"
+                                t-esc="analyticAccount.display_name"
+                              />
+                            </t>
+                          </select>
+                        </div>
+                        <label>Importe</label>
+                        <div class="o_legacy_field o_legacy_text_field">
+                          <input
+                            type="text"
+                            t-att-value="state.manualForm.amount"
+                            t-on-input="(ev) => this.updateManualForm('amount', ev)"
+                          />
+                        </div>
+                        <span />
+                        <label>Fecha de descuadre</label>
+                        <div class="o_legacy_field o_legacy_date_field">
+                          <input
+                            type="date"
+                            t-att-value="state.manualForm.writeoffDate"
+                            t-on-input="(ev) => this.updateManualForm('writeoffDate', ev)"
+                          />
+                        </div>
+                      </div>
+                      <button
+                        class="btn btn-link o_legacy_save_new"
+                        t-on-click="saveManualLineAndNew"
+                      >
+                                                <i
+                        class="fa fa-plus-circle"
+                      /> Guardar y nuevo
+                                            </button>
+                    </div>
+                  </t>
+                </t>
+              </t>
+              <t t-else="">
+                <div class="o_legacy_hint">
+                  <i class="fa fa-play" />
+                  <span>Seleccione contrapartida o Cree un Descuadre</span>
+                  <span class="o_legacy_hint_amount" t-esc="group.amountLabel || ''" />
+                </div>
+              </t>
+            </section>
+          </t>
+        </t>
+      </div>
+    </div>
+  </t>
+</templates>

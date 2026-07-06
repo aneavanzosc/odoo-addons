@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="action_manual_account_reconcile_legacy_view" model="ir.actions.client">
+    <field name="name">Conciliación manual clásica</field>
+    <field name="tag">avanzosc_manual_account_reconcile_legacy_view</field>
+  </record>
+
+  <menuitem
+    id="menu_manual_account_reconcile_legacy_view"
+    name="Conciliación manual clásica"
+    parent="account.menu_finance_entries"
+    action="action_manual_account_reconcile_legacy_view"
+    sequence="142"
+    groups="account.group_account_user"
+  />
+</odoo>
