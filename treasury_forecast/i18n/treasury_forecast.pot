@@ -501,6 +501,7 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
+
 #. module: treasury_forecast
 #. odoo-python
 #: code:addons/treasury_forecast/models/treasury_forecast.py:0
